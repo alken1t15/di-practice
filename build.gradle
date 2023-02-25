@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+group 'ru.javabegin.oop.di'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+
+task copyResources(type: Copy) {
+    from "${projectDir}/src/main/resources/META-INF"
+    into "${buildDir}/classes/java/main/META-INF"
+}
+
+processResources.dependsOn copyResources
+
+dependencies {
+    implementation 'org.jboss.weld.se:weld-se-core:+'
+
+}
+
